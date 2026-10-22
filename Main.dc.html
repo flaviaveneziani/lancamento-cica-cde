@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Painel de lançamento</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#011337}a:hover{color:#3D46A3}
+.tl-axis{container-type:inline-size}
+@container (max-width: 900px){.tl-d:not(.tl-major){font-size:0 !important}}
+@media (max-width: 760px){.ch{grid-template-columns: minmax(0, 1fr) !important}}
+</style>
+</helmet>
+<div style="background: #FFFFFF; color: #011337; font-family: 'DM Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.45; padding: 40px 24px 64px; box-sizing: border-box">
+<div style="max-width: 1320px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px">
+
+<header style="background: #011337; color: #FFFFFF; border-radius: 14px; padding: 32px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 20px 32px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #B9BFEA">Mapa do lançamento</div>
+<h1 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: clamp(34px, 5vw, 56px); line-height: 1.1; letter-spacing: 0.01em; text-transform: uppercase">Campanha de Black November</h1>
+<div style="font-size: 16px; color: #E4E8F5">Ciça Rego Macedo · Decore para Sempre · Combo Decore Express</div>
+</div>
+<img src="./assets/e9d9e4ea48431cad71f9b5408b227fca.png" alt="Grupo Permaneo" style="display: block; width: 190px; height: auto">
+</header>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px">
+
+<section style="flex: 2 1 560px; min-width: 0; box-sizing: border-box; background: #FFFFFF; border: 1px solid #DDE1EA; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Metas de faturamento</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<sc-for list="{{metas}}" as="m" hint-placeholder-count="3">
+<div style="flex: 1 1 180px; display: flex; flex-direction: column; gap: 4px; padding: 16px; background: #ECEEFA; border-radius: 10px">
+<div style="font-size: 14px; font-weight: 600; color: #4E5670">{{m.nome}}</div>
+<div style="font-family: 'DM Sans', system-ui, sans-serif; font-size: 34px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; font-variant-numeric: tabular-nums">{{m.fat}}</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="flex: 1 1 320px; min-width: 0; box-sizing: border-box; background: #FFFFFF; border: 1px solid #DDE1EA; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Investimentos previstos</h2>
+<div style="display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 0; border-bottom: 1px solid #DDE1EA">
+<div style="font-size: 15px; color: #2A3350">Investimento em API do WhatsApp</div>
+<div style="font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap">{{d.api}}</div>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 0; border-bottom: 1px solid #DDE1EA">
+<div style="font-size: 15px; color: #2A3350">Investimento em Tráfego Pago</div>
+<div style="font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap">{{d.trafego}}</div>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0 0">
+<div style="font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em">Total</div>
+<div style="font-family: 'DM Sans', system-ui, sans-serif; font-size: 26px; font-weight: 700; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; white-space: nowrap">{{d.total}}</div>
+</div>
+</div>
+</section>
+
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px">
+
+<section style="flex: 2 1 560px; min-width: 0; box-sizing: border-box; background: #FFFFFF; border: 1px solid #DDE1EA; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Calendário do lançamento</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 24px 32px">
+
+<div style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 400">Outubro</div>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; font-size: 13px; font-weight: 600; color: #4E5670; text-align: center">
+<div>D</div><div>S</div><div>T</div><div>Q</div><div>Q</div><div>S</div><div>S</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px">
+<sc-for list="{{octCells}}" as="c" hint-placeholder-count="35">
+<div style="position: relative; aspect-ratio: 1 / 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border-radius: 8px; font-size: 14px; font-variant-numeric: tabular-nums; background: {{c.bg}}; color: {{c.fg}}; font-weight: {{c.fw}}; box-shadow: {{c.ring}}">{{c.n}}<sc-if value="{{c.live}}" hint-placeholder-val="{{ false }}"><span style="display: block; width: 6px; height: 6px; border-radius: 50%; background: #5E69C5; box-shadow: 0 0 0 1.5px #FFFFFF"></span></sc-if><sc-if value="{{c.hasDps}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 4px; right: 4px; bottom: 4px; height: 5px; border-radius: 3px; background: {{c.dps}}; box-shadow: 0 0 0 1px #FFFFFF"></span></sc-if></div>
+</sc-for>
+</div>
+</div>
+
+<div style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 400">Novembro</div>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; font-size: 13px; font-weight: 600; color: #4E5670; text-align: center">
+<div>D</div><div>S</div><div>T</div><div>Q</div><div>Q</div><div>S</div><div>S</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px">
+<sc-for list="{{novCells}}" as="c" hint-placeholder-count="35">
+<div style="position: relative; aspect-ratio: 1 / 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border-radius: 8px; font-size: 14px; font-variant-numeric: tabular-nums; background: {{c.bg}}; color: {{c.fg}}; font-weight: {{c.fw}}; box-shadow: {{c.ring}}">{{c.n}}<sc-if value="{{c.live}}" hint-placeholder-val="{{ false }}"><span style="display: block; width: 6px; height: 6px; border-radius: 50%; background: #5E69C5; box-shadow: 0 0 0 1.5px #FFFFFF"></span></sc-if><sc-if value="{{c.hasDps}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 4px; right: 4px; bottom: 4px; height: 5px; border-radius: 3px; background: {{c.dps}}; box-shadow: 0 0 0 1px #FFFFFF"></span></sc-if></div>
+</sc-for>
+</div>
+</div>
+
+<div style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 400">Dezembro</div>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; font-size: 13px; font-weight: 600; color: #4E5670; text-align: center">
+<div>D</div><div>S</div><div>T</div><div>Q</div><div>Q</div><div>S</div><div>S</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px">
+<sc-for list="{{decCells}}" as="c" hint-placeholder-count="35">
+<div style="position: relative; aspect-ratio: 1 / 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border-radius: 8px; font-size: 14px; font-variant-numeric: tabular-nums; background: {{c.bg}}; color: {{c.fg}}; font-weight: {{c.fw}}; box-shadow: {{c.ring}}">{{c.n}}<sc-if value="{{c.live}}" hint-placeholder-val="{{ false }}"><span style="display: block; width: 6px; height: 6px; border-radius: 50%; background: #5E69C5; box-shadow: 0 0 0 1.5px #FFFFFF"></span></sc-if><sc-if value="{{c.hasDps}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 4px; right: 4px; bottom: 4px; height: 5px; border-radius: 3px; background: {{c.dps}}; box-shadow: 0 0 0 1px #FFFFFF"></span></sc-if></div>
+</sc-for>
+</div>
+</div>
+
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 14px">
+<div style="display: flex; align-items: center; gap: 8px"><span style="display: inline-block; width: 14px; height: 14px; border-radius: 4px; background: #CEFFA3"></span>Combo · Captação</div>
+<div style="display: flex; align-items: center; gap: 8px"><span style="display: inline-block; width: 14px; height: 14px; border-radius: 4px; background: #011337"></span>Combo · Revelação da oferta</div>
+<div style="display: flex; align-items: center; gap: 8px"><span style="display: inline-block; width: 14px; height: 14px; border-radius: 4px; background: {{accent}}"></span>Combo · Carrinho</div>
+<div style="display: flex; align-items: center; gap: 8px"><span style="display: inline-block; width: 14px; height: 14px; border-radius: 4px; background: #5E69C5"></span>Lives do Povo</div>
+<div style="display: flex; align-items: center; gap: 8px"><span style="display: inline-block; width: 14px; height: 5px; border-radius: 3px; background: #B9BFEA"></span>Decore Para Sempre · Antecipação</div>
+<div style="display: flex; align-items: center; gap: 8px"><span style="display: inline-block; width: 14px; height: 5px; border-radius: 3px; background: #011337"></span>Decore Para Sempre · Carrinho</div>
+<div style="display: flex; align-items: center; gap: 8px"><span style="display: inline-block; width: 14px; height: 14px; border-radius: 4px; background: #DADDF3"></span>Decore a Sala · Antecipação</div>
+<div style="display: flex; align-items: center; gap: 8px"><span style="display: inline-block; width: 14px; height: 14px; border-radius: 4px; background: #5E69C5"></span>Decore a Sala · Carrinho</div>
+<div style="display: flex; align-items: center; gap: 8px"><span style="display: inline-block; width: 14px; height: 14px; border-radius: 4px; box-sizing: border-box; border: 2px solid #011337"></span>Hoje</div>
+</div>
+</section>
+
+
+</div>
+
+
+<section style="background: #FFFFFF; border: 1px solid #DDE1EA; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Linha do tempo do lançamento · Combo Decore Express</h2>
+<div style="display: grid; grid-template-columns: clamp(110px, 24%, 250px) minmax(0, 1fr); column-gap: 20px; row-gap: 16px; align-items: center">
+
+<div class="tl-axis" style="grid-column: 2; grid-row: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #4E5670">
+<div style="flex: 13 1 0; min-width: 0">Outubro</div>
+<div style="flex: 30 1 0; min-width: 0">Novembro</div>
+<div style="flex: 8 1 0; min-width: 0">Dezembro</div>
+</div>
+<div style="display: flex">
+<sc-for list="{{axis}}" as="x" hint-placeholder-count="40">
+<div class="{{x.cls}}" style="flex: 1 1 0; min-width: 0; text-align: center; white-space: nowrap; font-size: 12px; font-variant-numeric: tabular-nums; font-weight: {{x.fw}}; color: {{x.fg}}">{{x.n}}</div>
+</sc-for>
+</div>
+</div>
+
+<div style="grid-column: 1; grid-row: 2; min-width: 0; overflow-wrap: anywhere; display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 18px; font-weight: 600">Captação de leads</div>
+<div style="font-size: 14px; color: #4E5670; font-variant-numeric: tabular-nums">19/10 a 03/11 · 16 dias</div>
+<div style="font-size: 14px; font-weight: 500">{{st.cap}}</div>
+</div>
+<div style="grid-column: 2; grid-row: 2; min-width: 0; height: 40px; background: #EEF0F5; border-radius: 8px; position: relative">
+<div style="position: absolute; top: 0; bottom: 0; left: 0.0000%; width: 31.3725%; background: #CEFFA3; border-radius: 8px"></div>
+</div>
+
+<div style="grid-column: 1; grid-row: 3; min-width: 0; overflow-wrap: anywhere; display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 18px; font-weight: 600">Revelação da oferta</div>
+<div style="font-size: 14px; color: #4E5670; font-variant-numeric: tabular-nums">03/11 · 1 dia</div>
+<div style="font-size: 14px; font-weight: 500">{{st.rev}}</div>
+</div>
+<div style="grid-column: 2; grid-row: 3; min-width: 0; height: 40px; background: #EEF0F5; border-radius: 8px; position: relative">
+<div style="position: absolute; top: 0; bottom: 0; left: 29.4118%; width: 1.9608%; min-width: 10px; background: #011337; border-radius: 8px"></div>
+</div>
+
+<div style="grid-column: 1; grid-row: 4; min-width: 0; overflow-wrap: anywhere; display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 18px; font-weight: 600">Carrinho</div>
+<div style="font-size: 14px; color: #4E5670; font-variant-numeric: tabular-nums">04/11 a 27/11 · 24 dias</div>
+<div style="font-size: 14px; font-weight: 500">{{st.carrinho}}</div>
+</div>
+<div style="grid-column: 2; grid-row: 4; min-width: 0; height: 40px; background: #EEF0F5; border-radius: 8px; position: relative">
+<div style="position: absolute; top: 0; bottom: 0; left: 31.3725%; width: 47.0588%; background: {{accent}}; border-radius: 8px"></div>
+</div>
+
+<div style="grid-column: 1; grid-row: 5; min-width: 0; overflow-wrap: anywhere; display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 18px; font-weight: 600">Downsell</div>
+<div style="font-size: 14px; color: #4E5670; font-variant-numeric: tabular-nums">Decore a Sala · 05 a 08/12</div>
+<div style="font-size: 14px; font-weight: 500">{{st.das}}</div>
+</div>
+<div style="grid-column: 2; grid-row: 5; min-width: 0; height: 40px; background: #EEF0F5; border-radius: 8px; position: relative">
+<div style="position: absolute; top: 0; bottom: 0; left: 92.1569%; width: 3.9216%; background: #DADDF3; border-radius: 8px"></div>
+<div style="position: absolute; top: 0; bottom: 0; left: 96.0784%; width: 3.9216%; background: #5E69C5; border-radius: 8px"></div>
+</div>
+
+<div style="grid-column: 2; grid-row: 2 / span 4; align-self: stretch; margin-top: -16px; position: relative; z-index: 1; pointer-events: none; border-right: 1px solid rgba(1, 19, 55, 0.12); background-image: linear-gradient(to right, rgba(1, 19, 55, 0.12) 1px, transparent 1px); background-size: calc(100% / 51) 100%"></div>
+
+</div>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #DDE1EA; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Linha do tempo do lançamento · Decore Para Sempre</h2>
+<div style="display: grid; grid-template-columns: clamp(110px, 24%, 250px) minmax(0, 1fr); column-gap: 20px; row-gap: 16px; align-items: center">
+
+<div class="tl-axis" style="grid-column: 2; grid-row: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #4E5670">
+<div style="flex: 13 1 0; min-width: 0">Outubro</div>
+<div style="flex: 30 1 0; min-width: 0">Novembro</div>
+<div style="flex: 8 1 0; min-width: 0">Dezembro</div>
+</div>
+<div style="display: flex">
+<sc-for list="{{axis}}" as="x" hint-placeholder-count="40">
+<div class="{{x.cls}}" style="flex: 1 1 0; min-width: 0; text-align: center; white-space: nowrap; font-size: 12px; font-variant-numeric: tabular-nums; font-weight: {{x.fw}}; color: {{x.fg}}">{{x.n}}</div>
+</sc-for>
+</div>
+</div>
+
+<div style="grid-column: 1; grid-row: 2; min-width: 0; overflow-wrap: anywhere; display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 18px; font-weight: 600">Antecipação</div>
+<div style="font-size: 14px; color: #4E5670; font-variant-numeric: tabular-nums">29/10 a 04/11 · 7 dias</div>
+<div style="font-size: 14px; font-weight: 500">{{st.dpsAnt}}</div>
+</div>
+<div style="grid-column: 2; grid-row: 2; min-width: 0; height: 40px; background: #EEF0F5; border-radius: 8px; position: relative">
+<div style="position: absolute; top: 0; bottom: 0; left: 19.6078%; width: 13.7255%; background: #B9BFEA; border-radius: 8px"></div>
+</div>
+
+<div style="grid-column: 1; grid-row: 3; min-width: 0; overflow-wrap: anywhere; display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 18px; font-weight: 600">Carrinho</div>
+<div style="font-size: 14px; color: #4E5670; font-variant-numeric: tabular-nums">05/11 a 13/11 · 9 dias</div>
+<div style="font-size: 14px; font-weight: 500">{{st.dpsCar}}</div>
+</div>
+<div style="grid-column: 2; grid-row: 3; min-width: 0; height: 40px; background: #EEF0F5; border-radius: 8px; position: relative">
+<div style="position: absolute; top: 0; bottom: 0; left: 33.3333%; width: 17.6471%; background: #011337; border-radius: 8px"></div>
+</div>
+
+<div style="grid-column: 2; grid-row: 2 / span 2; align-self: stretch; margin-top: -16px; position: relative; z-index: 1; pointer-events: none; border-right: 1px solid rgba(1, 19, 55, 0.12); background-image: linear-gradient(to right, rgba(1, 19, 55, 0.12) 1px, transparent 1px); background-size: calc(100% / 51) 100%"></div>
+
+</div>
+</section>
+
+
+<section style="background: #FFFFFF; border: 1px solid #DDE1EA; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Agenda da especialista</h2>
+<div style="display: grid; grid-template-columns: clamp(110px, 24%, 250px) minmax(0, 1fr); column-gap: 20px; row-gap: 16px; align-items: center">
+
+<div class="tl-axis" style="grid-column: 2; grid-row: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #4E5670">
+<div style="flex: 13 1 0; min-width: 0">Outubro</div>
+<div style="flex: 30 1 0; min-width: 0">Novembro</div>
+<div style="flex: 8 1 0; min-width: 0">Dezembro</div>
+</div>
+<div style="display: flex">
+<sc-for list="{{axis}}" as="x" hint-placeholder-count="40">
+<div class="{{x.cls}}" style="flex: 1 1 0; min-width: 0; text-align: center; white-space: nowrap; font-size: 12px; font-variant-numeric: tabular-nums; font-weight: {{x.fw}}; color: {{x.fg}}">{{x.n}}</div>
+</sc-for>
+</div>
+</div>
+
+<div style="grid-column: 1; grid-row: 2; min-width: 0; overflow-wrap: anywhere; display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 18px; font-weight: 600">Lives do Povo</div>
+<div style="font-size: 14px; color: #4E5670">Semanal</div>
+<div style="font-size: 14px; font-weight: 500">{{st.lives}}</div>
+<div style="font-size: 12px; color: #4E5670">? = horário surpresa</div>
+</div>
+<div style="grid-column: 2; grid-row: 2; min-width: 0; height: 40px; background: #EEF0F5; border-radius: 8px; position: relative">
+<sc-for list="{{lives}}" as="l" hint-placeholder-count="6">
+<div style="position: absolute; top: 0; bottom: 0; left: {{l.left}}; width: 1.9608%; display: flex; align-items: center; justify-content: center; background: #5E69C5; color: #FFFFFF; border-radius: 4px; font-size: 8px; font-weight: 700; letter-spacing: -0.03em; white-space: pre-line; text-align: center; line-height: 1.15; overflow: hidden">{{l.hora}}</div>
+</sc-for>
+</div>
+
+<div style="grid-column: 2; grid-row: 2 / span 1; align-self: stretch; margin-top: -16px; position: relative; z-index: 1; pointer-events: none; border-right: 1px solid rgba(1, 19, 55, 0.12); background-image: linear-gradient(to right, rgba(1, 19, 55, 0.12) 1px, transparent 1px); background-size: calc(100% / 51) 100%"></div>
+
+</div>
+</section>
+
+<section style="box-sizing: border-box; background: #FFFFFF; border: 1px solid #DDE1EA; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Projeção de investimentos e vendas</h2>
+
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px">
+<div style="display: flex; align-items: center; gap: 10px"><span style="display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: {{accent}}"></span><h3 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 400; letter-spacing: 0.01em">Combo Decore Express</h3></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{comboChips}}" as="k" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 10px 14px; background: #EEF0F5; border-radius: 8px; min-width: 140px">
+<div style="font-size: 12px; font-weight: 600; color: #4E5670">{{k.label}}</div>
+<div style="font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums">{{k.value}}</div>
+</div>
+</sc-for>
+</div>
+<div style="overflow-x: auto">
+<div role="table" aria-label="Projeções por taxa de conversão e custo por lead" style="min-width: 900px; font-size: 14px; font-variant-numeric: tabular-nums">
+<div role="row" style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); align-items: end; font-size: 12px; font-weight: 600; line-height: 1.3; color: #4E5670"><div role="columnheader" style="padding: 12px 10px; text-align: left">Taxa de conversão</div><div role="columnheader" style="padding: 12px 10px; text-align: right">Custo por lead</div><div role="columnheader" style="padding: 12px 10px; text-align: right">Nº de leads pagos</div><div role="columnheader" style="padding: 12px 10px; text-align: right">Nº de leads totais</div><div role="columnheader" style="padding: 12px 10px; text-align: right">Nº de vendas</div><div role="columnheader" style="padding: 12px 10px; text-align: right">Faturamento total</div><div role="columnheader" style="padding: 12px 10px; text-align: right">Faturamento pós mídia</div><div role="columnheader" style="padding: 12px 10px; text-align: right">ROAS</div></div>
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="3">
+<div role="row" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 7fr); border-top: 1px solid #B8BFD0">
+<div role="cell" style="display: flex; align-items: center; padding: 12px 10px; font-size: 16px; font-weight: 600; color: #011337; border-right: 1px solid #E6E9F0">{{g.taxa}}</div>
+<div style="display: flex; flex-direction: column">
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); align-items: center; background: {{g.a.bg}}; color: {{g.a.fg}}; font-weight: {{g.a.fw}}; border-top: 1px solid {{g.a.bt}}"><div role="cell" style="padding: 12px 10px; text-align: right">{{g.a.cpl}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{g.a.pagos}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{g.a.totais}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{g.a.vendas}}</div><div role="cell" style="padding: 12px 10px; text-align: right; color: {{g.a.fatFg}}">{{g.a.fat}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{g.a.pos}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{g.a.roas}}</div></div>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); align-items: center; background: {{g.b.bg}}; color: {{g.b.fg}}; font-weight: {{g.b.fw}}; border-top: 1px solid {{g.b.bt}}"><div role="cell" style="padding: 12px 10px; text-align: right">{{g.b.cpl}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{g.b.pagos}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{g.b.totais}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{g.b.vendas}}</div><div role="cell" style="padding: 12px 10px; text-align: right; color: {{g.b.fatFg}}">{{g.b.fat}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{g.b.pos}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{g.b.roas}}</div></div>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); align-items: center; background: {{g.c.bg}}; color: {{g.c.fg}}; font-weight: {{g.c.fw}}; border-top: 1px solid {{g.c.bt}}"><div role="cell" style="padding: 12px 10px; text-align: right">{{g.c.cpl}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{g.c.pagos}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{g.c.totais}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{g.c.vendas}}</div><div role="cell" style="padding: 12px 10px; text-align: right; color: {{g.c.fatFg}}">{{g.c.fat}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{g.c.pos}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{g.c.roas}}</div></div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+
+
+<div style="height: 1px; background: #DDE1EA"></div>
+
+<div style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 24px">
+<div style="display: flex; align-items: center; gap: 10px"><span style="display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: #011337"></span><h3 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 400; letter-spacing: 0.01em">Decore Para Sempre</h3></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{dpsChips}}" as="k" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 2px; padding: 10px 14px; background: #EEF0F5; border-radius: 8px; min-width: 140px">
+<div style="font-size: 12px; font-weight: 600; color: #4E5670">{{k.label}}</div>
+<div style="font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums">{{k.value}}</div>
+</div>
+</sc-for>
+</div>
+<div style="overflow-x: auto">
+<div role="table" aria-label="Projeção Decore Para Sempre por taxa de conversão" style="min-width: 640px; font-size: 14px; font-variant-numeric: tabular-nums">
+<div role="row" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: end; font-size: 12px; font-weight: 600; line-height: 1.3; color: #4E5670"><div role="columnheader" style="padding: 12px 10px; text-align: left">Taxa de conversão</div><div role="columnheader" style="padding: 12px 10px; text-align: right">Nº de vendas</div><div role="columnheader" style="padding: 12px 10px; text-align: right">Faturamento total</div><div role="columnheader" style="padding: 12px 10px; text-align: right">Faturamento pós mídia</div><div role="columnheader" style="padding: 12px 10px; text-align: right">ROAS</div></div>
+<sc-for list="{{dpsRows}}" as="r" hint-placeholder-count="3">
+<div role="row" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: center; border-top: 1px solid #B8BFD0; color: #2A3350"><div role="cell" style="padding: 12px 10px; font-size: 16px; font-weight: 600; color: #011337">{{r.taxa}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{r.vendas}}</div><div role="cell" style="padding: 12px 10px; text-align: right; font-weight: 600; color: #011337">{{r.fat}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{r.pos}}</div><div role="cell" style="padding: 12px 10px; text-align: right">{{r.roas}}</div></div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+
+<section id="detalhes" style="box-sizing: border-box; background: #FFFFFF; border: 1px solid #DDE1EA; border-radius: 14px; padding: 24px 28px; display: flex; flex-direction: column; gap: 20px; margin-top: 8px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Detalhes das campanhas</h2>
+</div>
+<div role="group" aria-label="Escolher campanha" style="display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" onClick="{{tabs.combo.pick}}" aria-pressed="{{tabs.combo.on}}" style="flex: 1 1 260px; min-height: 64px; display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 12px; border: 2px solid {{tabs.combo.border}}; background: {{tabs.combo.bg}}; color: {{tabs.combo.fg}}; font: inherit; text-align: left; cursor: pointer">
+<span style="flex: 0 0 14px; height: 14px; border-radius: 4px; background: {{accent}}; box-shadow: 0 0 0 2px #FFFFFF"></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 17px; font-weight: 700">Combo Decore Express</span><span style="font-size: 13px; opacity: 0.8">Lançamento meteórico · 04/11 a 27/11</span></span>
+</button>
+<button type="button" onClick="{{tabs.dps.pick}}" aria-pressed="{{tabs.dps.on}}" style="flex: 1 1 260px; min-height: 64px; display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 12px; border: 2px solid {{tabs.dps.border}}; background: {{tabs.dps.bg}}; color: {{tabs.dps.fg}}; font: inherit; text-align: left; cursor: pointer">
+<span style="flex: 0 0 14px; height: 14px; border-radius: 4px; background: #011337; box-shadow: 0 0 0 2px #FFFFFF"></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 17px; font-weight: 700">Decore Para Sempre</span><span style="font-size: 13px; opacity: 0.8">Ação para alunas · 05/11 a 13/11</span></span>
+</button>
+</div>
+<sc-if value="{{tabs.combo.on}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column">
+<div style="display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 16px 40px; padding: 28px 0; border-top: 1px solid #DDE1EA" class="ch">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">01</div>
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.15">Resumo</div>
+</div>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px"><div style="display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; background: #EEF0F5; border-radius: 10px"><div style="font-size: 12px; font-weight: 600; color: #4E5670">Formato</div><div style="font-size: 16px; font-weight: 700; line-height: 1.3">Lançamento meteórico</div></div><div style="display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; background: #EEF0F5; border-radius: 10px"><div style="font-size: 12px; font-weight: 600; color: #4E5670">Preço</div><div style="font-size: 16px; font-weight: 700; line-height: 1.3">R$ 1.997 · 12x R$ 194,56</div></div><div style="display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; background: #EEF0F5; border-radius: 10px"><div style="font-size: 12px; font-weight: 600; color: #4E5670">Prazo de acesso</div><div style="font-size: 16px; font-weight: 700; line-height: 1.3">1 ano</div></div></div>
+</div>
+</div><div style="display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 16px 40px; padding: 28px 0; border-top: 1px solid #DDE1EA" class="ch">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">02</div>
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.15">Produto</div>
+</div>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Estrutura</div><div style="columns: 2 320px; column-gap: 32px"><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 22px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">01</span><span>Introdução ao Decore</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 22px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">02</span><span>Decore a Cozinha, Copa e Área de Serviço</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 22px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">03</span><span>Decore o Banheiro</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 22px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">04</span><span>Decore o Lavabo</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 22px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">05</span><span>Decore o Home Office</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 22px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">06</span><span>Decore a Sala</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 22px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">07</span><span>Decore o Quarto</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 22px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">08</span><span>Decore Kids I</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 22px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">09</span><span>Decore Kids II</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 22px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">10</span><span>Decore o Espaço Gourmet</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 22px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">11</span><span>Ilumine a Casa</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 22px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">12</span><span>Organize a Casa</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 22px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">13</span><span>Planejamento Financeiro</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 22px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">14</span><span>Oficina Decore</span></div></div><div style="font-size: 13px; color: #4E5670">Cada módulo inclui catálogos, moodboards e resumo dos vídeos em PDF.</div></div><div style="display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Bônus</div><div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid #DDE1EA; border-radius: 10px"><div style="font-size: 15px; font-weight: 700">3 fotografias em preto e branco <span style="display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: #FFE4DC; color: #B8361A; border-radius: 6px; padding: 2px 7px; white-space: nowrap; vertical-align: middle">Em definição</span></div><div style="font-size: 13px; color: #4E5670">Em PDF em alta resolução, para imprimir, emoldurar e decorar a casa.</div><ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 4px; font-size: 14px; line-height: 1.45; color: #2A3350"><li><strong style="font-weight: 600">Horizonte</strong>, de Jaque Vojta</li><li><strong style="font-weight: 600">Coqueiros</strong>, de Marina Lomar</li><li><strong style="font-weight: 600">Um café em Milão</strong>, de Karin Schaly</li></ul></div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid #DDE1EA; border-radius: 10px"><div style="font-size: 15px; font-weight: 700">Aulas especiais ao vivo</div><div style="display: flex; flex-direction: column; gap: 12px; padding-top: 2px">
+<div style="display: flex; flex-direction: column; gap: 3px"><div style="font-size: 14px; font-weight: 600">A decoração da casa sob a perspectiva da anfitriã, com Ana Luisa Rego Macedo</div><div style="font-size: 14px; line-height: 1.45; color: #2A3350">Uma conversa sobre o que observar na hora de decorar a própria casa, considerando as necessidades do dia a dia, as escolhas estéticas e funcionais e os detalhes que fazem a diferença para quem vive e recebe.</div></div>
+<div style="display: flex; flex-direction: column; gap: 3px"><div style="font-size: 14px; font-weight: 600">As etapas do projeto de Interiores na prática, com Rafael Ávila</div><div style="font-size: 14px; line-height: 1.45; color: #2A3350">O verdadeiro Decore na prática! Um passo a passo cronológico da execução de um projeto: o que fazer primeiro, quais profissionais contratar em cada etapa e como organizar a sequência dos serviços.</div></div>
+</div></div>
+</div></div>
+</div>
+</div><div style="display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 16px 40px; padding: 28px 0; border-top: 1px solid #DDE1EA" class="ch">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">03</div>
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.15">Oferta</div>
+</div>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><div style="flex: 1 1 170px; display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; background: #EEF0F5; color: #011337; border-radius: 10px"><div style="font-size: 12px; font-weight: 600; color: #4E5670">Ancoragem (de)</div><div style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; text-decoration: line-through; text-decoration-thickness: 2px;">R$ 6.376</div></div><div aria-hidden="true" style="align-self: center; font-size: 22px; color: #4E5670">→</div><div style="flex: 1 1 170px; display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; background: #EEF0F5; color: #011337; border-radius: 10px"><div style="font-size: 12px; font-weight: 600; color: #4E5670">Desconto</div><div style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; ">– R$ 4.379,00</div></div><div aria-hidden="true" style="align-self: center; font-size: 22px; color: #4E5670">→</div><div style="flex: 1 1 170px; display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; background: #011337; color: #FFFFFF; border-radius: 10px"><div style="font-size: 12px; font-weight: 600; color: #B9BFEA">Por</div><div style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; ">R$ 1.997,00</div><div style="font-size: 14px; font-weight: 500; color: #E4E8F5; margin-top: 2px">ou 12x de R$ 194,56</div></div></div><ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.45; color: #2A3350"><li>Desconto válido até o fechamento do carrinho.</li><li>Alunos ativos: até R$ 500 de desconto, dependendo do que já adquiriram. Fechado via comercial.</li></ul><div style="display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Composição da ancoragem</div><div style="display: flex; flex-direction: column"><div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; padding: 9px 0; border-bottom: 1px solid #DDE1EA"><div style="font-size: 14px; color: #2A3350">Decore a Sala</div><div style="font-size: 15px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums">R$ 997,00</div></div><div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; padding: 9px 0; border-bottom: 1px solid #DDE1EA"><div style="font-size: 14px; color: #2A3350">Decore o Quarto + Kids I e II</div><div style="font-size: 15px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums">R$ 697,00</div></div><div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; padding: 9px 0; border-bottom: 1px solid #DDE1EA"><div style="font-size: 14px; color: #2A3350">Decore a Cozinha</div><div style="font-size: 15px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums">R$ 697,00</div></div><div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; padding: 9px 0; border-bottom: 1px solid #DDE1EA"><div style="font-size: 14px; color: #2A3350">Decore o Banheiro + Lavabo</div><div style="font-size: 15px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums">R$ 497,00</div></div><div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; padding: 9px 0; border-bottom: 1px solid #DDE1EA"><div style="font-size: 14px; color: #2A3350">Decore o Home Office</div><div style="font-size: 15px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums">R$ 497,00</div></div><div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; padding: 9px 0; border-bottom: 1px solid #DDE1EA"><div style="font-size: 14px; color: #2A3350">Decore o Espaço Gourmet</div><div style="font-size: 15px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums">R$ 997,00</div></div><div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; padding: 9px 0; border-bottom: 1px solid #DDE1EA"><div style="font-size: 14px; color: #2A3350">Ilumine a Casa + Organize a Casa + Planejamento Financeiro</div><div style="font-size: 15px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums">R$ 997,00</div></div><div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; padding: 9px 0; border-bottom: 1px solid #DDE1EA"><div style="font-size: 14px; color: #2A3350">Oficina Decore</div><div style="font-size: 15px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums">R$ 997,00</div></div></div></div><div style="display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Ofertas complementares</div><div style="display: flex; flex-wrap: wrap; gap: 12px"><div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 16px; border: 1px solid #DDE1EA; border-radius: 10px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #3D46A3">Bônus Tsunami</div><div style="font-size: 17px; font-weight: 700">Para os primeiros compradores</div><div style="display: flex; flex-direction: column"><div style="display: flex; flex-direction: column; gap: 2px; padding: 8px 0; border-bottom: 1px solid #DDE1EA"><div style="font-size: 13px; color: #4E5670">100 primeiros compradores</div><div style="font-size: 15px; font-weight: 600; text-align: left; line-height: 1.4">Sorteio de uma consultoria personalizada com a Ciça sobre a decoração da casa</div></div><div style="display: flex; flex-direction: column; gap: 2px; padding: 8px 0 0"><div style="font-size: 13px; color: #4E5670">10 primeiros compradores</div><div style="font-size: 15px; font-weight: 600; text-align: left; line-height: 1.4">Um exemplar do livro “Ralph Lauren: A way of living”, entregue diretamente na sua casa<div style="font-size: 13px; font-weight: 400; color: #4E5670; margin-top: 2px">Exclusivo para residentes no Brasil</div></div></div></div></div><div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 16px; border: 1px solid #DDE1EA; border-radius: 10px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #3D46A3">Upsell</div><div style="font-size: 17px; font-weight: 700">Guia dos Estilos</div><div style="display: flex; flex-direction: column"><div style="display: flex; flex-direction: column; gap: 2px; padding: 8px 0; border-bottom: 1px solid #DDE1EA"><div style="font-size: 13px; color: #4E5670">Ancoragem</div><div style="font-size: 15px; font-weight: 600; text-align: left; font-variant-numeric: tabular-nums">R$ 997</div></div><div style="display: flex; flex-direction: column; gap: 2px; padding: 8px 0; border-bottom: 1px solid #DDE1EA"><div style="font-size: 13px; color: #4E5670">Desconto</div><div style="font-size: 15px; font-weight: 600; text-align: left; font-variant-numeric: tabular-nums">+30% OFF</div></div><div style="display: flex; flex-direction: column; gap: 2px; padding: 8px 0 0"><div style="font-size: 13px; color: #4E5670">Preço final</div><div style="font-size: 15px; font-weight: 600; text-align: left; font-variant-numeric: tabular-nums">R$ 697</div></div></div></div><div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 16px; border: 1px solid #DDE1EA; border-radius: 10px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #3D46A3">Downsell · 05 a 08/12</div><div style="font-size: 17px; font-weight: 700">Decore a Sala</div><div style="display: flex; flex-direction: column"><div style="display: flex; flex-direction: column; gap: 2px; padding: 8px 0; border-bottom: 1px solid #DDE1EA"><div style="font-size: 13px; color: #4E5670">Bônus</div><div style="font-size: 15px; font-weight: 600; text-align: left; font-variant-numeric: tabular-nums">Módulo Decore a Casa para o Natal</div></div><div style="display: flex; flex-direction: column; gap: 2px; padding: 8px 0; border-bottom: 1px solid #DDE1EA"><div style="font-size: 13px; color: #4E5670">Ancoragem</div><div style="font-size: 15px; font-weight: 600; text-align: left; font-variant-numeric: tabular-nums">R$ 997</div></div><div style="display: flex; flex-direction: column; gap: 2px; padding: 8px 0; border-bottom: 1px solid #DDE1EA"><div style="font-size: 13px; color: #4E5670">Desconto</div><div style="font-size: 15px; font-weight: 600; text-align: left; font-variant-numeric: tabular-nums">R$ 200</div></div><div style="display: flex; flex-direction: column; gap: 2px; padding: 8px 0 0"><div style="font-size: 13px; color: #4E5670">Preço final</div><div style="font-size: 15px; font-weight: 600; text-align: left; font-variant-numeric: tabular-nums">R$ 797</div></div></div></div></div></div>
+</div>
+</div><div style="display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 16px 40px; padding: 28px 0; border-top: 1px solid #DDE1EA" class="ch">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">04</div>
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.15">Plano de lançamento</div>
+</div>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="font-size: 15px; line-height: 1.5; color: #2A3350"><strong style="font-weight: 700">Meteórico.</strong> Lançamento curto, focado em público quente, sem evento de CPLs. A captação gera pré-inscrições e entrada no fluxo de WhatsApp, onde a audiência é aquecida com conteúdo e recebe a oferta em primeira mão. As vendas são sustentadas por lives e comunicação intensa no carrinho.</div><div style="display: flex; flex-direction: column"><div style="position: relative; display: flex; gap: 16px; padding-bottom: 20px"><div style="position: absolute; left: 13px; top: 30px; bottom: 0; width: 2px; background: #DDE1EA"></div>
+<div style="flex: 0 0 28px; height: 28px; border-radius: 50%; background: #011337; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; position: relative">1</div>
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 6px; padding-top: 3px"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span style="font-size: 16px; font-weight: 700">Captação</span><span style="font-size: 13px; font-weight: 600; color: #3D46A3; background: #ECEEFA; border-radius: 6px; padding: 2px 8px; white-space: nowrap">19/10 a 03/11</span></div><ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.45; color: #2A3350"><li>Chamada de pré-inscrição para a oferta de Black November do Combo Decore Express.</li><li>Narrativa: esta oportunidade ficou disponível há dois anos pela última vez e não sabemos quando vai se repetir. Para decorar a casa com a Ciça gastando menos, é preciso aproveitar agora, na última chance do ano de fazer a sua casa decolar.</li><li>Leads vão para o WhatsApp, para receber conteúdos exclusivos, saber a oferta com antecedência e ser avisadas quando as inscrições abrirem. Também avisaremos sobre as lives do povo, sem prometer avisar sobre todas.</li></ul></div>
+</div><div style="position: relative; display: flex; gap: 16px; padding-bottom: 20px"><div style="position: absolute; left: 13px; top: 30px; bottom: 0; width: 2px; background: #DDE1EA"></div>
+<div style="flex: 0 0 28px; height: 28px; border-radius: 50%; background: #011337; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; position: relative">2</div>
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 6px; padding-top: 3px"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span style="font-size: 16px; font-weight: 700">Aquecimento</span></div><ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.45; color: #2A3350"><li>Funil de conteúdo nos grupos: 2 PDFs de conteúdo + depoimentos e provas sociais #minhacasadecolou + 1 áudio de revelação da oferta.</li></ul></div>
+</div><div style="position: relative; display: flex; gap: 16px; padding-bottom: 20px"><div style="position: absolute; left: 13px; top: 30px; bottom: 0; width: 2px; background: #DDE1EA"></div>
+<div style="flex: 0 0 28px; height: 28px; border-radius: 50%; background: #011337; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; position: relative">3</div>
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 6px; padding-top: 3px"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span style="font-size: 16px; font-weight: 700">Lembrete</span></div><ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.45; color: #2A3350"><li>CTA para o API Oficial do WhatsApp, para receber um lembrete quando as inscrições abrirem.</li></ul></div>
+</div><div style="position: relative; display: flex; gap: 16px; padding-bottom: 20px"><div style="position: absolute; left: 13px; top: 30px; bottom: 0; width: 2px; background: #DDE1EA"></div>
+<div style="flex: 0 0 28px; height: 28px; border-radius: 50%; background: #011337; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; position: relative">4</div>
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 6px; padding-top: 3px"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span style="font-size: 16px; font-weight: 700">Revelação da oferta</span><span style="font-size: 13px; font-weight: 600; color: #3D46A3; background: #ECEEFA; border-radius: 6px; padding: 2px 8px; white-space: nowrap">03/11</span></div><ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.45; color: #2A3350"><li>Oferta revelada em primeira mão para quem fez a pré-inscrição, um dia antes da abertura do carrinho, com um áudio da Ciça apresentando a oportunidade.</li></ul></div>
+</div><div style="position: relative; display: flex; gap: 16px; padding-bottom: 20px"><div style="position: absolute; left: 13px; top: 30px; bottom: 0; width: 2px; background: #DDE1EA"></div>
+<div style="flex: 0 0 28px; height: 28px; border-radius: 50%; background: #011337; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; position: relative">5</div>
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 6px; padding-top: 3px"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span style="font-size: 16px; font-weight: 700">Carrinho aberto</span><span style="font-size: 13px; font-weight: 600; color: #3D46A3; background: #ECEEFA; border-radius: 6px; padding: 2px 8px; white-space: nowrap">04/11 a 27/11</span></div><ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.45; color: #2A3350"><li>24 dias de carrinho, com desconto válido até o fechamento.</li><li>Lives do povo ao longo de todo o carrinho, em datas e horários a combinar com a especialista.</li><li>Tráfego e avisos no WhatsApp para levar audiência às lives, com volume de disparos e investimento definidos pelo time de CRM.</li><li>Fechamento no próprio dia da Black Friday (27/11).</li></ul></div>
+</div><div style="position: relative; display: flex; gap: 16px; padding-bottom: 0px">
+<div style="flex: 0 0 28px; height: 28px; border-radius: 50%; background: #011337; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; position: relative">6</div>
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 6px; padding-top: 3px"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span style="font-size: 16px; font-weight: 700">Downsell · Decore a Sala</span><span style="font-size: 13px; font-weight: 600; color: #3D46A3; background: #ECEEFA; border-radius: 6px; padding: 2px 8px; white-space: nowrap">05 a 08/12</span></div><ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.45; color: #2A3350"><li>Antecipação em 05 e 06/12 e carrinho em 07 e 08/12.</li></ul></div>
+</div></div>
+</div>
+</div><div style="display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 16px 40px; padding: 28px 0; border-top: 1px solid #DDE1EA" class="ch">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">05</div>
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.15">Público-alvo</div>
+</div>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; line-height: 1.45; color: #2A3350"><li>Compradoras de outros produtos: Comunidade Decore, O Guia da Casa da Ciça, Estilos de Decoração na Prática, Modulares do Decore a Casa e Decore a Mesa</li><li>Engajadas nas bases de e-mail</li><li>Seguidoras da Ciça no Instagram</li><li>Inscritas no canal do YouTube</li></ul>
+</div>
+</div><div style="display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 16px 40px; padding: 28px 0; border-top: 1px solid #DDE1EA" class="ch">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">06</div>
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.15">Narrativa</div>
+</div>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 20px 22px; background: #011337; color: #FFFFFF; border-radius: 12px">
+<div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #B9BFEA">Mote central</div>
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.25">A última chance do ano de fazer a sua casa decolar por um preço de Black November que cabe no seu bolso.</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Promessa do produto</div><div style="font-size: 15px; line-height: 1.5; color: #2A3350">Decorar a casa inteira com a direção da Ciça, ambiente por ambiente, com referências e indicações, em uma oferta exclusiva de Black November.</div></div><div style="display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Chamadas de captação</div><div style="display: flex; flex-wrap: wrap; gap: 12px"><div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 16px; background: #ECEEFA; border-radius: 10px"><div style="font-size: 12px; font-weight: 700; color: #3D46A3">Opção 1</div><div style="font-size: 16px; font-weight: 600; line-height: 1.35">Vem aí a Black da Ciça: a última chance do ano de fazer a sua casa decolar por um preço de Black November que cabe no seu bolso.</div><div style="font-size: 14px; color: #2A3350">Faça sua pré-inscrição para garantir o Combo Decore Express: os principais guias para decorar sua casa inteira com uma promoção exclusiva de Black November.</div></div><div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 16px; background: #ECEEFA; border-radius: 10px"><div style="font-size: 12px; font-weight: 700; color: #3D46A3">Opção 2</div><div style="font-size: 16px; font-weight: 600; line-height: 1.35">Os principais módulos da Família Decore com a oferta mais acessível do ano.</div><div style="font-size: 14px; color: #2A3350">Faça sua pré-inscrição para garantir o Combo Decore Express: os principais guias para decorar sua casa inteira com uma promoção exclusiva de Black November.</div></div><div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 16px; background: #ECEEFA; border-radius: 10px"><div style="font-size: 12px; font-weight: 700; color: #3D46A3">Opção 3</div><div style="font-size: 16px; font-weight: 600; line-height: 1.35">Conhecimento, referências e economia: tudo o que você precisa para transformar sua casa, por um valor muito mais acessível.</div><div style="font-size: 14px; color: #2A3350">Faça sua pré-inscrição para garantir o Combo Decore Express: os principais guias para decorar sua casa inteira com uma promoção exclusiva de Black November.</div></div></div></div>
+</div>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{tabs.dps.on}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column">
+<div style="display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 16px 40px; padding: 28px 0; border-top: 1px solid #DDE1EA" class="ch">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">01</div>
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.15">Resumo</div>
+</div>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px"><div style="display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; background: #EEF0F5; border-radius: 10px"><div style="font-size: 12px; font-weight: 600; color: #4E5670">Formato</div><div style="font-size: 16px; font-weight: 700; line-height: 1.3">Vendas diretas via CRM e API</div></div><div style="display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; background: #EEF0F5; border-radius: 10px"><div style="font-size: 12px; font-weight: 600; color: #4E5670">Preço</div><div style="font-size: 16px; font-weight: 700; line-height: 1.3">R$ 2.997 · 12x R$ 297,14</div></div><div style="display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; background: #EEF0F5; border-radius: 10px"><div style="font-size: 12px; font-weight: 600; color: #4E5670">Prazo de acesso</div><div style="font-size: 16px; font-weight: 700; line-height: 1.3">Vitalício</div></div></div>
+</div>
+</div><div style="display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 16px 40px; padding: 28px 0; border-top: 1px solid #DDE1EA" class="ch">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">02</div>
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.15">Produto</div>
+</div>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Estrutura</div><div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 16px; font-weight: 700"><span style="color: #5E69C5">01</span>&nbsp; Decore a Casa 2.0</div><div style="columns: 2 320px; column-gap: 32px"><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 40px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">01.1</span><span>Introdução ao Decore</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 40px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">01.2</span><span>Decore a Cozinha, Copa e Área de Serviço</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 40px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">01.3</span><span>Decore o Banheiro</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 40px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">01.4</span><span>Decore o Lavabo</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 40px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">01.5</span><span>Decore o Home Office</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 40px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">01.6</span><span>Decore a Sala</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 40px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">01.7</span><span>Decore o Quarto</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 40px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">01.8</span><span>Decore Kids I</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 40px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">01.9</span><span>Decore Kids II</span></div><div style="break-inside: avoid; display: flex; gap: 10px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid #DDE1EA; font-size: 14px; color: #2A3350"><span style="flex: 0 0 40px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">01.10</span><span>Decore o Espaço Gourmet</span></div></div><div style="font-size: 13px; color: #4E5670">Cada módulo inclui catálogos, moodboards e resumo dos vídeos em PDF.</div>
+<div style="display: flex; flex-direction: column; gap: 6px; padding-top: 6px; font-size: 16px; font-weight: 700">
+<div><span style="color: #5E69C5">02</span>&nbsp; Guia do Sofá</div>
+<div><span style="color: #5E69C5">03</span>&nbsp; Estilos de Decoração na Prática</div>
+<div><span style="color: #5E69C5">04</span>&nbsp; Guia da Casa da Ciça</div>
+</div></div></div><div style="display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Bônus</div><ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; line-height: 1.45; color: #2A3350"><li>Oficina Decore</li><li>Minicurso Ilumine a Casa, com Juliana Pascoalini (@jupascoalini)</li><li>Minicurso Organize a Casa, com Paula Furlan (@paulafurlanorganizer)</li><li>Aula "Como se organizar financeiramente para uma reforma ou construção", com o professor Eduardo Mira (@professormira)</li></ul><div style="display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid #DDE1EA; border-radius: 10px"><div style="font-size: 15px; font-weight: 700">Galeria de Arte · mais de 30 artes escolhidas pela Ciça</div><div style="font-size: 13px; color: #4E5670">PDFs em alta resolução para baixar e imprimir, incluindo:</div><ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; line-height: 1.45; color: #2A3350"><li>"Cerejeiras", de Raul Gastão (@raulgastao)</li><li>Arte Wisdom, de Ela Menescal (@elamenescal)</li><li>Fotografia "Palmeira sob o Céu", da Casa Ginga (@casaginga)</li><li>Fotografia "O Horizonte", da Casa Ginga (@casaginga)</li><li>Fotografia "De Boa", de Karin Schaly (@karin.schaly)</li><li>Aquarela Nossa Senhora da Glória em Fine Art, pintada à mão, da Studio Lulis (@studiolulis)</li><li>03 fotografias do fotógrafo Alberto Magaglio</li></ul></div><div style="display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid #DDE1EA; border-radius: 10px"><div style="font-size: 15px; font-weight: 700">Aulas especiais ao vivo</div><div style="display: flex; flex-direction: column; gap: 12px; padding-top: 2px">
+<div style="display: flex; flex-direction: column; gap: 3px"><div style="font-size: 14px; font-weight: 600">A decoração da casa sob a perspectiva da anfitriã, com Ana Luisa Rego Macedo</div><div style="font-size: 14px; line-height: 1.45; color: #2A3350">Uma conversa sobre o que observar na hora de decorar a própria casa, considerando as necessidades do dia a dia, as escolhas estéticas e funcionais e os detalhes que fazem a diferença para quem vive e recebe.</div></div>
+<div style="display: flex; flex-direction: column; gap: 3px"><div style="font-size: 14px; font-weight: 600">As etapas do projeto de Interiores na prática, com Rafael Ávila</div><div style="font-size: 14px; line-height: 1.45; color: #2A3350">O verdadeiro Decore na prática! Um passo a passo cronológico da execução de um projeto: o que fazer primeiro, quais profissionais contratar em cada etapa e como organizar a sequência dos serviços.</div></div>
+</div></div></div>
+</div>
+</div><div style="display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 16px 40px; padding: 28px 0; border-top: 1px solid #DDE1EA" class="ch">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">03</div>
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.15">Oferta</div>
+</div>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><div style="flex: 1 1 170px; display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; background: #EEF0F5; color: #011337; border-radius: 10px"><div style="font-size: 12px; font-weight: 600; color: #4E5670">Ancoragem (de)</div><div style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; text-decoration: line-through; text-decoration-thickness: 2px;">R$ 4.997,00</div></div><div aria-hidden="true" style="align-self: center; font-size: 22px; color: #4E5670">→</div><div style="flex: 1 1 170px; display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; background: #EEF0F5; color: #011337; border-radius: 10px"><div style="font-size: 12px; font-weight: 600; color: #4E5670">Desconto</div><div style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; ">– R$ 2.000,00</div></div><div aria-hidden="true" style="align-self: center; font-size: 22px; color: #4E5670">→</div><div style="flex: 1 1 170px; display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; background: #011337; color: #FFFFFF; border-radius: 10px"><div style="font-size: 12px; font-weight: 600; color: #B9BFEA">Por</div><div style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; ">R$ 2.997,00</div><div style="font-size: 14px; font-weight: 500; color: #E4E8F5; margin-top: 2px">ou 12x de R$ 297,14</div></div></div><ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.45; color: #2A3350"><li>Desconto exclusivo para alunas, válido até o encerramento.</li></ul><div style="display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Ofertas complementares</div><div style="display: flex; flex-wrap: wrap; gap: 12px"><div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 16px; border: 1px solid #DDE1EA; border-radius: 10px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #3D46A3">Bônus Tsunami · 50 primeiras</div><div style="font-size: 17px; font-weight: 700">Exclusivo desta oferta</div><div style="display: flex; flex-direction: column"><div style="display: flex; flex-direction: column; gap: 2px; padding: 8px 0 0"><div style="font-size: 13px; color: #4E5670">50 primeiras compradoras</div><div style="font-size: 15px; font-weight: 600; text-align: left; line-height: 1.4">Acesso por 1 ano à Comunidade Decore</div></div></div></div></div></div>
+</div>
+</div><div style="display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 16px 40px; padding: 28px 0; border-top: 1px solid #DDE1EA" class="ch">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">04</div>
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.15">Plano de lançamento</div>
+</div>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="font-size: 15px; line-height: 1.5; color: #2A3350"><strong style="font-weight: 700">Vendas diretas via CRM e API.</strong> Ação curta, só para alunas ativas, sem tráfego pago, sem captação aberta e sem evento. A antecipação prepara a base, o carrinho fica aberto por alguns dias e, no dia seguinte, quem não comprou é convidada para a lista de espera, onde o comercial trabalha conversões no 1:1.</div><div style="display: flex; flex-direction: column"><div style="position: relative; display: flex; gap: 16px; padding-bottom: 20px"><div style="position: absolute; left: 13px; top: 30px; bottom: 0; width: 2px; background: #DDE1EA"></div>
+<div style="flex: 0 0 28px; height: 28px; border-radius: 50%; background: #011337; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; position: relative">1</div>
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 6px; padding-top: 3px"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span style="font-size: 16px; font-weight: 700">Antecipação</span><span style="font-size: 13px; font-weight: 600; color: #3D46A3; background: #ECEEFA; border-radius: 6px; padding: 2px 8px; white-space: nowrap">29/10 a 04/11</span></div><ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.45; color: #2A3350"><li>Avisar as alunas ativas que uma condição exclusiva para membros do Decore a Casa abre em 05/11, às 8h.</li><li>Reforçar que a condição não será disponibilizada em nenhum outro lugar: é exclusiva para membros do Decore a Casa.</li><li>Revelar toda a estrutura do produto e a oferta na régua de antecipação.</li><li>CTA dos e-mails: API Oficial (receber o link no WhatsApp).</li><li>CTA do API Oficial: Google Calendar (ativar o lembrete na agenda).</li></ul></div>
+</div><div style="position: relative; display: flex; gap: 16px; padding-bottom: 20px"><div style="position: absolute; left: 13px; top: 30px; bottom: 0; width: 2px; background: #DDE1EA"></div>
+<div style="flex: 0 0 28px; height: 28px; border-radius: 50%; background: #011337; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; position: relative">2</div>
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 6px; padding-top: 3px"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span style="font-size: 16px; font-weight: 700">Carrinho aberto</span><span style="font-size: 13px; font-weight: 600; color: #3D46A3; background: #ECEEFA; border-radius: 6px; padding: 2px 8px; white-space: nowrap">05/11 a 13/11</span></div><ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.45; color: #2A3350"><li>Comunicação de prova, tour do combo e quebra de objeções.</li><li>Avisar desde o início a data de encerramento, para criar pressão mas dar alguns dias para a decisão.</li><li>Ressaltar a exclusividade: promoção só para membros do Decore a Casa, que não será revelada em nenhum outro local.</li></ul></div>
+</div><div style="position: relative; display: flex; gap: 16px; padding-bottom: 0px">
+<div style="flex: 0 0 28px; height: 28px; border-radius: 50%; background: #011337; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; position: relative">3</div>
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 6px; padding-top: 3px"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span style="font-size: 16px; font-weight: 700">Lista de espera</span><span style="font-size: 13px; font-weight: 600; color: #3D46A3; background: #ECEEFA; border-radius: 6px; padding: 2px 8px; white-space: nowrap">após o fechamento</span></div><ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.45; color: #2A3350"><li>Quem não comprou é convidada para a lista de espera, com conversões no 1:1 pelo comercial.</li></ul></div>
+</div></div>
+</div>
+</div><div style="display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 16px 40px; padding: 28px 0; border-top: 1px solid #DDE1EA" class="ch">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">05</div>
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.15">Público-alvo</div>
+</div>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; line-height: 1.45; color: #2A3350"><li>Alunas ativas do Decore a Casa 2.0</li><li>Alunas ativas do Decore a Casa (versão original)</li></ul><div style="font-size: 14px; padding: 12px 14px; background: #FFF4F0; border: 1px solid #FFD0C2; color: #8A2812; border-radius: 10px"><strong style="font-weight: 700">Importante:</strong> excluir membros do Decore para Sempre 2025.</div>
+</div>
+</div><div style="display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 16px 40px; padding: 28px 0; border-top: 1px solid #DDE1EA" class="ch">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 700; color: #5E69C5; font-variant-numeric: tabular-nums">06</div>
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.15">Narrativa</div>
+</div>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 6px; padding: 20px 22px; background: #011337; color: #FFFFFF; border-radius: 12px">
+<div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #B9BFEA">Mote central</div>
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.25">Sua casa bem decorada para sempre</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Promessa do produto</div><div style="font-size: 15px; line-height: 1.5; color: #2A3350">Ter o método da Ciça e todos os materiais da Família Decore à mão em qualquer fase da sua casa e da sua vida, sem prazo de acesso e sem precisar comprar de novo.</div></div><div style="display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4E5670">Chamadas · antecipação via e-mail e WhatsApp</div><div style="display: flex; flex-wrap: wrap; gap: 12px"><div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 16px; background: #ECEEFA; border-radius: 10px"><div style="font-size: 12px; font-weight: 700; color: #3D46A3">Opção 1</div><div style="font-size: 16px; font-weight: 600; line-height: 1.35">Uma chance única de garantir, para sempre, toda a Família Decore com a melhor oferta da história.</div><div style="font-size: 14px; color: #2A3350">Condição exclusiva para membros do Decore a Casa. Ela não vai aparecer em nenhum outro lugar e abre no dia 05/11, às 8h, com bônus especial para as 50 primeiras.</div></div><div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 16px; background: #ECEEFA; border-radius: 10px"><div style="font-size: 12px; font-weight: 700; color: #3D46A3">Opção 2</div><div style="font-size: 16px; font-weight: 600; line-height: 1.35">Esta mensagem só chegou para membros do Decore a Casa.</div><div style="font-size: 14px; color: #2A3350">Condição exclusiva para membros do Decore a Casa. Ela não vai aparecer em nenhum outro lugar e abre no dia 05/11, às 8h, com bônus especial para as 50 primeiras.</div></div><div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 8px; padding: 16px; background: #ECEEFA; border-radius: 10px"><div style="font-size: 12px; font-weight: 700; color: #3D46A3">Opção 3</div><div style="font-size: 16px; font-weight: 600; line-height: 1.35">Seu acesso tem data para acabar. A sua casa, não.</div><div style="font-size: 14px; color: #2A3350">Condição exclusiva para membros do Decore a Casa. Ela não vai aparecer em nenhum outro lugar e abre no dia 05/11, às 8h, com bônus especial para as 50 primeiras.</div></div></div></div>
+</div>
+</div>
+</div>
+</sc-if>
+</section>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF562F","options":["#FF562F","#5E69C5","#CEFFA3","#011337"],"section":"Marca"},"comboApi":{"editor":"int","default":20000,"min":0,"step":1000,"section":"Combo Decore Express"},"comboTrafego":{"editor":"int","default":110000,"min":0,"step":5000,"section":"Combo Decore Express"},"investCaptacao":{"editor":"int","default":60000,"min":0,"step":5000,"section":"Combo Decore Express"},"leadsOrganicos":{"editor":"int","default":3000,"min":0,"step":100,"section":"Combo Decore Express"},"ticket":{"editor":"int","default":1997,"min":0,"step":10,"section":"Combo Decore Express"},"dpsApi":{"editor":"int","default":20000,"min":0,"step":1000,"section":"Decore Para Sempre"},"dpsTrafego":{"editor":"int","default":0,"min":0,"step":1000,"section":"Decore Para Sempre"},"dpsBase":{"editor":"int","default":1675,"min":0,"step":100,"section":"Decore Para Sempre"},"dpsTicket":{"editor":"int","default":2997,"min":0,"step":10,"section":"Decore Para Sempre"},"$preview":{"width":1440,"height":6400}}'>
+class Component extends DCLogic {
+renderVals() {
+var P = this.props || {};
+var accent = P.accent || '#FF562F';
+function lum(hex) {
+var h = String(hex).replace('#', '');
+if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+var c = [0, 2, 4].map(function (i) { var v = parseInt(h.substr(i, 2), 16) / 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+}
+var aL = lum(accent);
+var accentFg = (isNaN(aL) || aL <= 0.185) ? '#FFFFFF' : '#011337';
+
+var DAY = 86400000;
+var t = new Date(); t.setHours(0, 0, 0, 0);
+var phases = [
+{ key: 'burb', name: 'Burburinho', s: new Date(2026, 9, 19), e: new Date(2026, 9, 20), bg: '#5E69C5', fg: '#FFFFFF' },
+{ key: 'cap', name: 'Captação de leads', s: new Date(2026, 9, 19), e: new Date(2026, 10, 3), bg: '#CEFFA3', fg: '#011337' },
+{ key: 'rev', name: 'Revelação da oferta', s: new Date(2026, 10, 3), e: new Date(2026, 10, 3), bg: '#011337', fg: '#FFFFFF' },
+{ key: 'carrinho', name: 'Carrinho', s: new Date(2026, 10, 4), e: new Date(2026, 10, 27), bg: accent, fg: accentFg }
+];
+function status(p) {
+if (t < p.s) {
+var n = Math.round((p.s - t) / DAY);
+return n === 1 ? 'Começa amanhã' : 'Começa em ' + n + ' dias';
+}
+if (t > p.e) return 'Concluída';
+var total = Math.round((p.e - p.s) / DAY) + 1;
+var cur = Math.round((t - p.s) / DAY) + 1;
+return total === 1 ? 'É hoje' : 'Em andamento · dia ' + cur + ' de ' + total;
+}
+var st = {};
+phases.forEach(function (p) { st[p.key] = status(p); });
+st.dpsAnt = status({ s: new Date(2026, 9, 29), e: new Date(2026, 10, 4) });
+st.dpsCar = status({ s: new Date(2026, 10, 5), e: new Date(2026, 10, 13) });
+st.dasAnt = status({ s: new Date(2026, 11, 5), e: new Date(2026, 11, 6) });
+st.dasCar = status({ s: new Date(2026, 11, 7), e: new Date(2026, 11, 8) });
+st.das = status({ s: new Date(2026, 11, 5), e: new Date(2026, 11, 8) });
+var start = new Date(2026, 9, 19), end = new Date(2026, 11, 28);
+var axisEnd = new Date(2026, 11, 8);
+var liveDates = [];
+for (var ld = new Date(2026, 9, 5); ld <= end; ld = new Date(ld.getFullYear(), ld.getMonth(), ld.getDate() + 1)) { if (ld.getDay() === 1) liveDates.push(ld); }
+function dm(x) { return ('0' + x.getDate()).slice(-2) + '/' + ('0' + (x.getMonth() + 1)).slice(-2); }
+var extraLives = { '4/11': '8h', '5/11': '12h', '6/11': 'surpresa', '7/11': 'surpresa', '8/11': 'surpresa', '10/11': '12h', '11/11': '20h', '12/11': '20h', '13/11': 'surpresa', '14/11': 'surpresa', '15/11': 'surpresa', '17/11': '12h', '18/11': '20h', '19/11': '20h', '20/11': 'surpresa', '21/11': 'surpresa', '22/11': 'surpresa', '24/11': 'surpresa', '25/11': '12h', '26/11': '12h', '27/11': '15h e 20h' };
+var liveSeen = {};
+liveDates.forEach(function (x) { liveSeen[x.getTime()] = 1; });
+Object.keys(extraLives).forEach(function (k) { var pr = k.split('/'); var x = new Date(2026, Number(pr[1]) - 1, Number(pr[0])); if (!liveSeen[x.getTime()]) { liveSeen[x.getTime()] = 1; liveDates.push(x); } });
+liveDates.sort(function (a, b) { return a - b; });
+function hora(x) { return extraLives[x.getDate() + '/' + (x.getMonth() + 1)] || '12h'; }
+function horaCurta(h) { return h === 'surpresa' ? '?' : (h === '15h e 20h' ? '15h\n20h' : h); }
+function horaTexto(h) { return h === 'surpresa' ? 'horário surpresa' : 'às ' + h; }
+var lives = liveDates.filter(function (x) { return x >= start && x <= axisEnd; }).map(function (x) { return { left: (Math.round((x - start) / DAY) * 1.960784) + '%', hora: horaCurta(hora(x)), surpresa: hora(x) === 'surpresa' }; });
+var livesInfo = 'Toda segunda-feira às 12h · quarta 04/11 às 9h';
+var liveKeys = {};
+liveDates.forEach(function (x) { liveKeys[x.getTime()] = 1; });
+var nextLive = liveDates.filter(function (x) { return x >= t; })[0];
+st.lives = !nextLive ? 'Concluídas' : (nextLive.getTime() === t.getTime() ? 'Live hoje · ' + horaTexto(hora(nextLive)) : 'Próxima: ' + dm(nextLive) + ' · ' + horaTexto(hora(nextLive)));
+var nowLabel = 'Status';
+var nowText = 'Lançamento encerrado';
+var active = phases.filter(function (p) { return t >= p.s && t <= p.e; });
+if (active.length) {
+var a = active[active.length - 1];
+nowLabel = 'Fase atual';
+nowText = a.name + (a.s.getTime() === a.e.getTime() ? ' · hoje' : ' · ' + status(a).replace('Em andamento · ', ''));
+} else {
+for (var i = 0; i < phases.length; i++) {
+if (t < phases[i].s) { nowLabel = 'Próxima fase'; nowText = phases[i].name + ' · ' + status(phases[i]).toLowerCase(); break; }
+}
+}
+
+var majors = { '2026-9-19': 1, '2026-10-3': 1, '2026-10-4': 1, '2026-10-27': 1, '2026-11-5': 1, '2026-11-8': 1 };
+var axis = [];
+for (var k = 0; k < 51; k++) {
+var dt = new Date(2026, 9, 19 + k);
+var key = dt.getFullYear() + '-' + dt.getMonth() + '-' + dt.getDate();
+var mj = !!majors[key];
+axis.push({ n: String(dt.getDate()), cls: mj ? 'tl-d tl-major' : 'tl-d', fw: mj ? 700 : 400, fg: mj ? '#011337' : '#4E5670' });
+}
+
+function build(y, m) {
+var first = new Date(y, m, 1).getDay();
+var count = new Date(y, m + 1, 0).getDate();
+var cells = [];
+for (var b = 0; b < first; b++) cells.push({ n: '', live: false, hasDps: false, dps: 'transparent', bg: 'transparent', fg: '#4E5670', fw: 400, ring: 'none' });
+var prio = [phases[2], phases[1], phases[3], { s: new Date(2026, 11, 5), e: new Date(2026, 11, 6), bg: '#DADDF3', fg: '#011337' }, { s: new Date(2026, 11, 7), e: new Date(2026, 11, 8), bg: '#5E69C5', fg: '#FFFFFF' }];
+for (var d = 1; d <= count; d++) {
+var date = new Date(y, m, d);
+var bg = '#EEF0F5', fg = '#4E5670', fw = 400;
+for (var q = 0; q < prio.length; q++) {
+var ph = prio[q];
+if (date >= ph.s && date <= ph.e) { bg = ph.bg; fg = ph.fg; fw = 600; break; }
+}
+var isToday = date.getTime() === t.getTime();
+var dps = (date >= new Date(2026, 9, 29) && date <= new Date(2026, 10, 4)) ? '#B9BFEA' : ((date >= new Date(2026, 10, 5) && date <= new Date(2026, 10, 13)) ? '#011337' : '');
+cells.push({ n: String(d), live: !!liveKeys[date.getTime()], hasDps: !!dps, dps: dps || 'transparent', bg: bg, fg: fg, fw: fw, ring: isToday ? 'inset 0 0 0 2px #FFFFFF, 0 0 0 2px #011337' : 'none' });
+}
+return cells;
+}
+
+function num(v, dflt) { var x = Number(v); return (v === undefined || v === null || v === '' || isNaN(x)) ? dflt : x; }
+var comboApi = num(P.comboApi, 20000);
+var comboTrafego = num(P.comboTrafego, 110000);
+var captacao = num(P.investCaptacao, 60000);
+var organicos = num(P.leadsOrganicos, 3000);
+var ticket = num(P.ticket, 1997);
+var dpsApi = num(P.dpsApi, 20000);
+var dpsTrafego = num(P.dpsTrafego, 0);
+var dpsBase = num(P.dpsBase, 1675);
+var dpsTicket = num(P.dpsTicket, 2997);
+var comboInvest = comboApi + comboTrafego;
+var dpsInvest = dpsApi + dpsTrafego;
+var api = comboApi + dpsApi;
+var trafego = comboTrafego + dpsTrafego;
+var investTotal = comboInvest;
+function int(x) { return String(Math.round(x)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+function brl(x) { return (x < 0 ? '-R$ ' : 'R$ ') + int(Math.abs(x)); }
+function pct(x, dec) { return (x * 100).toFixed(dec).replace('.', ',') + '%'; }
+var d = { api: brl(api), trafego: brl(trafego), total: brl(api + trafego), captacao: brl(captacao), organicos: int(organicos), ticket: brl(ticket) };
+
+var comboChips = [{ label: 'Investimento API', value: brl(comboApi) }, { label: 'Investimento Tráfego Pago', value: brl(comboTrafego) }, { label: 'Leads orgânicos', value: int(organicos) }, { label: 'Ticket do produto', value: brl(ticket) }];
+var dpsChips = [{ label: 'Investimento API', value: brl(dpsApi) }, { label: 'Investimento Tráfego Pago', value: brl(dpsTrafego) }, { label: 'Base de alunas DC', value: int(dpsBase) }, { label: 'Ticket do produto', value: brl(dpsTicket) }];
+var dpsRows = [0.02, 0.05, 0.08].map(function (c) { var v = dpsBase * c; var f = v * dpsTicket; return { taxa: pct(c, 2), vendas: int(v), fat: brl(f), pos: brl(f - dpsInvest), roas: dpsInvest > 0 ? (f / dpsInvest).toFixed(1).replace('.', ',') : '—' }; });
+var convs = [0.08, 0.10, 0.12];
+var nomes = ['Mínima', 'Boa', 'Excelente'];
+var rows = [];
+var metas = [{ nome: 'Mínima', fat: 'R$ 1.000.000' }, { nome: 'Boa', fat: 'R$ 1.300.000' }, { nome: 'Excelente', fat: 'R$ 1.600.000' }];
+convs.forEach(function (conv, ci) {
+[15, 20, 25].forEach(function (cpl, j) {
+var pagos = cpl > 0 ? captacao / cpl : 0;
+var totais = pagos + organicos;
+var vendas = totais * conv;
+var fat = vendas * ticket;
+var hi = cpl === 20;
+rows.push({
+taxa: j === 0 ? pct(conv, 2) : '',
+cpl: 'R$ ' + cpl.toFixed(2).replace('.', ','),
+pagos: int(pagos), totais: int(totais), vendas: int(vendas),
+fat: brl(fat), pos: brl(fat - investTotal),
+roas: investTotal > 0 ? (fat / investTotal).toFixed(1).replace('.', ',') : '—',
+bg: hi ? '#ECEEFA' : 'transparent', fg: hi ? '#011337' : '#2A3350', fw: hi ? 600 : 400,
+fatFg: hi ? '#3D46A3' : '#2A3350', bt: j === 0 ? 'transparent' : '#E6E9F0'
+});
+});
+});
+var groups = [0, 1, 2].map(function (i) { return { taxa: rows[i * 3].taxa, a: rows[i * 3], b: rows[i * 3 + 1], c: rows[i * 3 + 2] }; });
+var self = this;
+var tab = (this.state && this.state.tab) || 'combo';
+function tb(k) { var on = tab === k; return { on: on, pick: function () { self.setState({ tab: k }); }, bg: on ? '#011337' : '#FFFFFF', fg: on ? '#FFFFFF' : '#011337', border: on ? '#011337' : '#DDE1EA' }; }
+var tabs = { combo: tb('combo'), dps: tb('dps') };
+return { tabs: tabs, accent: accent, accentFg: accentFg, st: st, lives: lives, livesInfo: livesInfo, nowLabel: nowLabel, nowText: nowText, axis: axis, octCells: build(2026, 9), novCells: build(2026, 10), decCells: build(2026, 11), d: d, metas: metas, groups: groups, comboChips: comboChips, dpsChips: dpsChips, dpsRows: dpsRows };
+}
+}
+</script>
+</body>
+</html>
